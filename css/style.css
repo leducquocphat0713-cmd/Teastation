@@ -1,0 +1,515 @@
+/* =========================================================
+   LAB 8.2 - RESPONSIVE + TRIỂN KHAI (Tea Station)
+   ========================================================= */
+:root {
+  --mainGreen: #658a3f;
+  --mainDark: #383b36;
+  --mainGrey: #e5e5e5;
+  --mainLight: #f1f5f8;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainSpacing: 0.3rem;
+  --mainTransition: all 0.3s linear;
+  --scriptFont: "Courgette", cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Cabin", Arial, sans-serif;
+  color: var(--mainBlack);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+img { display: block; width: 100%; }
+
+/* ---------- Tiêu đề & nút dùng chung ---------- */
+.script-title {
+  font-family: var(--scriptFont);
+  color: var(--mainGreen);
+  letter-spacing: var(--mainSpacing);
+  font-size: 1.1rem;
+}
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.btn {
+  display: inline-block;
+  background: var(--mainGreen);
+  color: var(--mainBlack);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-size: 0.7rem;
+  padding: 0.5rem 1rem;
+  outline: 2px solid var(--mainGreen);
+  outline-offset: 3px;
+  transition: var(--mainTransition);
+}
+.btn:hover { background: transparent; color: var(--mainGreen); }
+
+/* =========================================================
+   MENU (checkbox :checked - từ Lab 5)
+   ========================================================= */
+#menu-toggle { display: none; }
+.menu-button {
+  position: fixed; top: 20px; left: 20px; z-index: 1000;
+  font-size: 30px; cursor: pointer; background: #eee;
+  padding: 5px 12px; border-radius: 5px; user-select: none;
+}
+.icon-close { display: none; }
+.nav {
+  background-color: var(--mainGrey);
+  position: fixed; top: 0; left: 0;
+  width: 250px; height: 100%;
+  display: none; z-index: 999;
+}
+.nav ul { list-style: none; padding: 100px 20px 0; }
+#menu-toggle:checked ~ .nav { display: block; }
+#menu-toggle:checked + .menu-button .icon-open { display: none; }
+#menu-toggle:checked + .menu-button .icon-close { display: inline-block; }
+
+.nav__link:link, .nav__link:visited {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: var(--mainBlack);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+  transition: var(--mainTransition);
+}
+.nav__link:hover {
+  color: var(--mainGreen);
+  border-left-color: var(--mainGreen);
+  padding-left: 5px;
+  transform: translateX(10%);
+}
+.nav__link:active { transform: translateX(10%) scale(0.95); }
+
+/* =========================================================
+   HEADER - FLEXBOX (Lab 6.1)
+   ========================================================= */
+.header {
+  min-height: 100vh;
+  background: url("../images/tea-bg.jpg") center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 1rem;
+}
+.heading_first {
+  font-family: var(--scriptFont);
+  color: var(--mainGreen);
+  letter-spacing: 0.5rem;
+  font-size: 1.2rem;
+}
+.heading_first--animation { animation: slideInRight 5s ease-in-out; }
+.heading_primary {
+  color: var(--mainWhite);
+  font-size: 3rem;
+  letter-spacing: 0.6rem;
+  margin: 1rem 0 2.5rem;
+  animation: slideInLeft 5s ease-in-out;
+}
+.header__btn:link, .header__btn:visited {
+  display: inline-block;
+  background-color: var(--mainGreen);
+  color: var(--mainBlack);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  font-size: 0.8rem;
+  outline: 3px solid var(--mainGreen);
+  outline-offset: 4px;
+  animation: show 2s 1s linear;
+  animation-fill-mode: backwards;
+  letter-spacing: 0.7rem;
+}
+
+@keyframes slideInLeft {
+  0%   { opacity: 0.1; transform: translateX(-100%); }
+  50%  { opacity: 0.7; transform: translateX(25%); }
+  75%  { opacity: 0.9; transform: translateX(-10%); }
+  100% { transform: translateX(0); }
+}
+@keyframes slideInRight {
+  0%   { opacity: 0.1; transform: translateX(100%); }
+  50%  { opacity: 0.7; transform: translateX(-25%); }
+  75%  { opacity: 0.9; transform: translateX(10%); }
+  100% { transform: translateX(0); }
+}
+@keyframes show {
+  0%   { opacity: 0; transform: scale(2); }
+  25%  { transform: scale(1.5); }
+  50%  { transform: scale(0.9); }
+  75%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* =========================================================
+   MÀN HÌNH 1: FEATURES - GRID 4 CỘT
+   ========================================================= */
+#features {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.feature_item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  background: var(--mainWhite);
+  transition: var(--mainTransition);
+}
+.feature_title {
+  color: var(--mainGreen);
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font-size: 0.9rem;
+}
+.feature_text { font-size: 0.85rem; }
+.feature_item:hover { background: var(--mainGreen); }
+.feature_item:hover .feature_title { color: var(--mainWhite); }
+
+/* =========================================================
+   MÀN HÌNH 2: ABOUT - GRID 2 CỘT 50% 50%
+   ========================================================= */
+#about {
+  padding: 8rem 5%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+}
+.about_left {
+  width: 90%;
+  height: 100%;
+  min-height: 300px;
+  background: var(--mainGreen);
+  border: 5px solid var(--mainGreen);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.about__img { transition: var(--mainTransition); }
+.about_left:hover .about__img { opacity: 0.5; transform: scale(1.2); }
+.about_right { width: 60%; }
+.about_right p { font-size: 0.85rem; margin-bottom: 1rem; }
+
+/* =========================================================
+   MÀN HÌNH 3: PRODUCTS - GRID 3 CỘT
+   ========================================================= */
+#products {
+  background: var(--mainDark);
+  padding: 5rem 15%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.product_info { color: var(--mainWhite); }
+.product_info p { font-size: 0.85rem; margin-bottom: 1rem; }
+.product {
+  padding-top: 1rem;
+  border-bottom: 3px solid var(--mainGreen);
+  padding-bottom: 2rem;
+}
+.product_img-box { border-radius: 12px; overflow: hidden; }
+.product_img { transition: var(--mainTransition); }
+.product:hover .product_img { transform: scale(1.1); }
+.product_name {
+  color: var(--mainWhite);
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font-size: 0.85rem;
+  margin: 1.5rem 0 1rem;
+}
+.product_price {
+  font-family: var(--scriptFont);
+  color: var(--mainGreen);
+  font-size: 1.1rem;
+}
+.product_info { border-bottom: 3px solid var(--mainGreen); padding-bottom: 2rem; }
+
+/* =========================================================
+   MÀN HÌNH 4: SERVICES - GRID 3 CỘT
+   ========================================================= */
+#services {
+  background: var(--mainGrey);
+  padding: 4rem 15%;
+  text-align: center;
+}
+.services_center {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.service {
+  background: var(--mainGreen);
+  border: 3px solid var(--mainGreen);
+  outline: 2px solid var(--mainGreen);
+  outline-offset: 2px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.35);
+  transition: var(--mainTransition);
+}
+.service:hover { transform: translateY(-8px); }
+.service_img { height: 140px; object-fit: cover; }
+.service_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+}
+.service_title {
+  color: var(--mainWhite);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+.service_body { min-height: 150px; }
+.service_btn {
+  color: var(--mainWhite);
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--mainWhite);
+  border-radius: 6px;
+  opacity: 0;                         /* ẩn nút */
+  transform: translateY(10px);
+  transition: var(--mainTransition);
+}
+.service:hover .service_btn {         /* rê chuột vào thẻ -> hiện nút */
+  opacity: 1;
+  transform: translateY(0);
+}
+.service_btn:hover { background: var(--mainWhite); color: var(--mainGreen); }
+
+/* =========================================================
+   MÀN HÌNH 5: CONTACT - GRID 2 CỘT
+   ========================================================= */
+#contact {
+  background: var(--mainLight);
+  padding: 4rem 15%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.contact_item { margin-bottom: 2.5rem; }
+.contact_item h3 {
+  font-family: var(--scriptFont);
+  color: var(--mainGreen);
+  letter-spacing: var(--mainSpacing);
+  font-size: 1.3rem;
+}
+.contact_item p { text-transform: uppercase; font-size: 0.85rem; }
+
+.contact_form {
+  background: var(--mainWhite);
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.contact_form h3 {
+  font-family: var(--scriptFont);
+  color: #4d6e8c;
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+  padding: 0.8rem 0 2rem;
+}
+.form_group { padding: 0 0.6rem; }
+.form_control {
+  display: block;
+  width: 100%;
+  border: none;
+  background: var(--mainLight);
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  letter-spacing: 0.3rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.form_control:focus { outline: 1px solid var(--mainGreen); }
+textarea.form_control { height: 5rem; resize: vertical; }
+.submit_btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  border: none;
+  background: var(--mainGreen);
+  color: var(--mainWhite);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: var(--mainTransition);
+}
+.submit_btn:hover { background: var(--mainDark); }
+
+
+/* =========================================================
+   LAYOUT TỔNG THỂ BẰNG CSS GRID (Lab 7.1)
+   Bước 1: tạo layout  -  Bước 2: đặt từng khối nội dung vào vùng
+   ========================================================= */
+.layout {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "header" "features" "about" "gallery" "products" "services" "social" "contact" "footer";
+}
+.header { grid-area: header; }
+#features { grid-area: features; }
+#about { grid-area: about; }
+#gallery { grid-area: gallery; }
+#products { grid-area: products; }
+#services { grid-area: services; }
+#social { grid-area: social; }
+#contact { grid-area: contact; }
+.footer { grid-area: footer; }
+
+/* =========================================================
+   LAB 7.2: SLIDESHOW (thư viện Swiper)
+   ========================================================= */
+#gallery { padding: 5rem 10%; text-align: center; background: var(--mainWhite); }
+.slideshow {
+  margin-top: 2rem;
+  border: 6px solid var(--mainGreen);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.slideshow .swiper-slide { position: relative; }
+.slideshow .swiper-slide img { height: 420px; object-fit: cover; }
+.slideshow .swiper-button-next,
+.slideshow .swiper-button-prev { color: var(--mainWhite); }
+.slideshow .swiper-pagination-bullet-active { background: var(--mainGreen); }
+.slide-caption {
+  position: absolute; left: 0; bottom: 0; width: 100%;
+  padding: 1rem; background: rgba(0, 0, 0, 0.45);
+  color: var(--mainWhite); letter-spacing: var(--mainSpacing); text-transform: uppercase;
+}
+
+/* =========================================================
+   LAB 7.2: TIỆN ÍCH (Like/Share, Comment, Video, Post)
+   ========================================================= */
+#social { background: var(--mainLight); padding: 5rem 10%; text-align: center; }
+.social_grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  text-align: left;
+}
+.widget {
+  background: var(--mainWhite);
+  border-top: 4px solid var(--mainGreen);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+.widget h4 {
+  color: var(--mainGreen);
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.widget-wide { grid-column: 1 / -1; }      /* chiếm cả 2 cột */
+.video-box { position: relative; padding-top: 56.25%; }   /* tỉ lệ 16:9 */
+.video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.fb-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+/* =========================================================
+   LAB 8.1: LIGHTBOX - con trỏ kính lúp trên ảnh bấm được
+   ========================================================= */
+a[data-lightbox] { display: block; cursor: zoom-in; }
+
+/* =========================================================
+   LAB 8.1: GOOGLE MAP (iframe)
+   ========================================================= */
+.gmap {
+  width: 100%;
+  height: 200px;
+  border: 3px solid var(--mainGreen);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+/* =========================================================
+   LAB 8.1: FOOTER
+   ========================================================= */
+.footer {
+  background: var(--mainDark);
+  color: var(--mainWhite);
+  text-align: center;
+  padding: 6rem 1rem;
+}
+.footer_icons { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+.footer_icons a {
+  color: var(--mainWhite);
+  font-size: 2rem;
+  transition: var(--mainTransition);
+}
+.footer_icons a:hover { color: var(--mainGreen); transform: translateY(-3px); }
+.footer p { font-size: 1.1rem; }
+.footer span { color: var(--mainGreen); text-transform: uppercase; margin: 0 0.3rem; }
+
+/* =========================================================
+   LAB 8.2: RESPONSIVE
+   ========================================================= */
+/* ----- Tablet (<= 992px) ----- */
+@media (max-width: 992px) {
+  #features { grid-template-columns: 50% 50%; }
+  #products, .services_center { grid-template-columns: 1fr 1fr; }
+  #products { padding: 5rem 8%; }
+  .product_info { grid-column: 1 / -1; }
+  #services, #contact { padding: 4rem 8%; }
+  .about_right { width: 85%; }
+}
+
+/* ----- Điện thoại (<= 768px) ----- */
+@media (max-width: 768px) {
+  html { font-size: 18px; }                 /* chữ to hơn cho dễ đọc */
+  .heading_primary { font-size: 2.2rem; letter-spacing: 0.4rem; }
+  .heading_first { font-size: 1.1rem; }
+
+  #features,
+  #about,
+  #products,
+  .services_center,
+  #contact,
+  .social_grid { grid-template-columns: 100%; }   /* tất cả về 1 cột */
+
+  .feature_text { max-width: 320px; margin: 0 auto; }
+
+  #about { padding: 3rem 8%; gap: 4rem; }
+  .about_left { width: 100%; min-height: auto; }
+  .about_right { width: 100%; }
+
+  #products { padding: 3rem 10%; gap: 3rem; }
+  .services_center { max-width: 380px; margin: 3rem auto 0; gap: 3rem; }
+  .service_img { height: 200px; }
+  #contact { padding: 3rem 10%; gap: 3rem; }
+
+  #gallery, #social { padding: 3rem 5%; }
+  .slideshow .swiper-slide img { height: 260px; }
+
+    .footer p { font-size: 1rem; }
+}
+
+/* ----- Màn hình rất nhỏ (<= 400px) ----- */
+@media (max-width: 400px) {
+  html { font-size: 16px; }
+  .heading_primary { font-size: 1.8rem; }
+  .header__btn:link, .header__btn:visited { letter-spacing: 0.4rem; padding: 0.8rem 1.5rem; }
+}

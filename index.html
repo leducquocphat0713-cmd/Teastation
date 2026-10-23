@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 8.2 - Tea Station (Responsive)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&family=Courgette&display=swap" rel="stylesheet">
+  <!-- Lab 7.2: thư viện slideshow Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+  <!-- Lab 8.1: Lightbox, icon Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Lab 7.2: Facebook SDK (copy từ developers.facebook.com) -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0"></script>
+
+  <!-- ================= MENU ================= -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-button">
+    <span class="icon-open">&#9776;</span>
+    <span class="icon-close">&times;</span>
+  </label>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="#features" class="nav__link">Features</a></li>
+      <li><a href="#about" class="nav__link">About</a></li>
+      <li><a href="#gallery" class="nav__link">Gallery</a></li>
+      <li><a href="#products" class="nav__link">Products</a></li>
+      <li><a href="#services" class="nav__link">Services</a></li>
+      <li><a href="#contact" class="nav__link">Contacts</a></li>
+    </ul>
+  </nav>
+
+  <main class="layout">
+    <!-- ================= HEADER (flexbox) ================= -->
+    <header class="header">
+      <h3 class="heading_first heading_first--animation">Over one hunred flavors of tea</h3>
+      <h1 class="heading_primary">SPECIALLY CRAFTED TEA</h1>
+      <a href="#about" class="header__btn">Explore</a>
+    </header>
+
+    <!-- ================= MÀN HÌNH 1: FEATURES ================= -->
+    <section id="features">
+      <article class="feature_item">
+        <h4 class="feature_title">Made with love</h4>
+        <p class="feature_text">Our tea is made with love, from the collection of the leaves to the brewing.</p>
+      </article>
+      <article class="feature_item">
+        <h4 class="feature_title">Relaxation</h4>
+        <p class="feature_text">Set aside anxiety and relax after a hard day with a cup of hot tea in your hands.</p>
+      </article>
+      <article class="feature_item">
+        <h4 class="feature_title">Energy</h4>
+        <p class="feature_text">Our tea will energize you with vitamins and invigorate the rest of the day.</p>
+      </article>
+      <article class="feature_item">
+        <h4 class="feature_title">Family recipe</h4>
+        <p class="feature_text">All our recipes are passed down from generation to generation for a long time.</p>
+      </article>
+    </section>
+
+    <!-- ================= MÀN HÌNH 2: ABOUT ================= -->
+    <section id="about">
+      <div class="about_left">
+        <a href="./images/about-bcg.jpeg" data-lightbox="tea" data-title="About Tea Station"><img src="./images/about-bcg.jpeg" alt="About Us" class="about__img"></a>
+      </div>
+      <div class="about_right">
+        <h3 class="script-title">About Our</h3>
+        <h2 class="section-title">TEA STATION</h2>
+        <p>Once upon a time we only had a couple of teapots and enjoyed tea only with our family. Over time, we were able to afford to buy a small tea plantation.</p>
+        <p>Now we have a whole teahouse and we delight many people with delicious and hot tea. We serve black long tea, relaxing green and jasmine tea, tea with spices and many others.</p>
+        <a href="#products" class="btn">Learn more</a>
+      </div>
+    </section>
+
+    <!-- ================= LAB 7.2: SLIDESHOW ================= -->
+    <section id="gallery">
+      <h3 class="script-title">Our Gallery</h3>
+      <h2 class="section-title">TEA MOMENTS</h2>
+      <div class="swiper slideshow">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="./images/tea-bg.jpg" alt="Tea"><p class="slide-caption">Specially crafted tea</p></div>
+          <div class="swiper-slide"><img src="./images/about-bcg.jpeg" alt="Teapot"><p class="slide-caption">Our tea station</p></div>
+          <div class="swiper-slide"><a href="./images/black-tea.jpg" data-lightbox="tea" data-title="Black long tea"><img src="./images/black-tea.jpg" alt="Black tea"></a><p class="slide-caption">Black long tea</p></div>
+          <div class="swiper-slide"><a href="./images/green-tea.jpg" data-lightbox="tea" data-title="Green tea with jasmine"><img src="./images/green-tea.jpg" alt="Green tea"></a><p class="slide-caption">Green tea with jasmine</p></div>
+          <div class="swiper-slide"><img src="./images/service-recipe.jpg" alt="Recipe"><p class="slide-caption">Custom recipe</p></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+
+    <!-- ================= MÀN HÌNH 3: PRODUCTS ================= -->
+    <section id="products">
+      <div class="product_info">
+        <h3 class="script-title">Check Out</h3>
+        <h2 class="section-title">OUR PRODUCTS</h2>
+        <p>Our assortment includes long tea, relaxing and invigorating green tea with spices, lemon juice, jasmine, cinnamon and anise, milk tea and many others.</p>
+        <a href="#" class="btn">Inventory</a>
+      </div>
+      <article class="product">
+        <div class="product_img-box">
+          <img src="./images/black-tea.jpg" alt="Black long tea" class="product_img">
+        </div>
+        <h4 class="product_name">Black long tea</h4>
+        <p class="product_price">$ 3.99</p>
+      </article>
+      <article class="product">
+        <div class="product_img-box">
+          <img src="./images/green-tea.jpg" alt="Green tea with jasmine" class="product_img">
+        </div>
+        <h4 class="product_name">Green tea with jasmine</h4>
+        <p class="product_price">$ 4.99</p>
+      </article>
+    </section>
+
+    <!-- ================= MÀN HÌNH 4: SERVICES ================= -->
+    <section id="services">
+      <h3 class="script-title">Explore</h3>
+      <h2 class="section-title">OUR SERVICES</h2>
+      <div class="services_center">
+        <article class="service">
+          <img src="./images/service-recipe.jpg" alt="Custom recipe" class="service_img">
+          <div class="service_body">
+            <h4 class="service_title">Custom Recipe Service</h4>
+            <a href="#" class="service_btn">Read More</a>
+          </div>
+        </article>
+        <article class="service">
+          <img src="./images/service-delivery.jpg" alt="Home delivery" class="service_img">
+          <div class="service_body">
+            <h4 class="service_title">Home Delivery Service</h4>
+            <a href="#" class="service_btn">Read More</a>
+          </div>
+        </article>
+        <article class="service">
+          <img src="./images/service-aging.jpg" alt="Tea aging" class="service_img">
+          <div class="service_body">
+            <h4 class="service_title">Tea Aging Service</h4>
+            <a href="#" class="service_btn">Read More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= LAB 7.2: TIỆN ÍCH ================= -->
+    <section id="social">
+      <h3 class="script-title">Connect</h3>
+      <h2 class="section-title">WITH US</h2>
+      <div class="social_grid">
+        <!-- Nút Like + Share (Facebook plugin) -->
+        <div class="widget widget-wide">
+          <h4>Like &amp; Share</h4>
+          <div class="fb-row">
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"></div>
+          </div>
+        </div>
+
+        <!-- Video (YouTube embed) -->
+        <div class="widget">
+          <h4>Video</h4>
+          <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/VbCu_Gwr_Mo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Post (Facebook embedded post) -->
+        <div class="widget">
+          <h4>Post</h4>
+             <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCNTTFPLHCM%2Fposts%2Fpfbid0rovBDXWxVDkEN6s2Jo6q1MKFV9sPz96JV9QREsobYKe2Y88shZCEbSB1m1CMMDfEl&show_text=true&width=500"
+           width="100%" height="773"
+           style="border:none;overflow:hidden;max-width:500px"
+           scrolling="no" frameborder="0" allowfullscreen="true"
+           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+
+        <!-- Comment (Facebook comments plugin) -->
+        <div class="widget widget-wide">
+          <h4>Comment</h4>
+          <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MÀN HÌNH 5: CONTACT ================= -->
+    <section id="contact">
+      <div class="contact_info">
+        <div class="contact_item">
+          <h3>address</h3>
+          <p>40 Tô Ký</p>
+        </div>
+        <div class="contact_item">
+          <h3>email</h3>
+          <p>leducquocphat0713@email.com</p>
+        </div>
+        <div class="contact_item">
+          <h3>telephone</h3>
+          <p>+ 0705031800</p>
+        </div>
+        <div class="contact_item">
+          <h3>google map</h3>
+          <iframe class="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4437742585224!2d106.62343057480602!3d10.853812489299708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b6c59ba4c97%3A0x535e784068f1558b!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1792400207962!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map"></iframe>
+        </div>
+      </div>
+
+      <form class="contact_form" action="#">
+        <h3>contact us</h3>
+        <div class="form_group">
+          <input type="text" class="form_control" placeholder="Name" required>
+          <input type="email" class="form_control" placeholder="Email" required>
+          <textarea class="form_control" placeholder="Message"></textarea>
+        </div>
+        <button type="submit" class="submit_btn">Submit here</button>
+      </form>
+    </section>
+
+    <!-- ================= LAB 8.1: FOOTER ================= -->
+    <footer class="footer">
+      <div class="footer_icons">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-square-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <p>&copy; 2026 <span>Tea Station</span>. Designed by <span>LeDucQuocPhat</span>. Coded by <span>LeDucQuocPhat</span> in learning purposes only.</p>
+    </footer>
+  </main>
+
+  <!-- Lab 7.2: Swiper - đoạn khởi tạo copy từ trang hướng dẫn swiperjs.com -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper(".slideshow", {
+      loop: true,
+      autoplay: { delay: 3000 },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+    });
+  </script>
+
+  <!-- Lab 8.1: Lightbox (không cần viết code, chỉ thêm data-lightbox vào thẻ a) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
